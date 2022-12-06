@@ -7,7 +7,7 @@ void createStuff() {
 }
 
 void setWorld() {
-  world.setGravity(0, 1);
+  world.setGravity(gravity.x, gravity.y);
 }
 
 void setProt() {
@@ -16,7 +16,7 @@ void setProt() {
   prot.setFillColor(0);
   prot.setFriction(1);
   prot.setFill(100, 0, 40);
-  prot.setRestitution(0.9);
+  prot.setRestitution(1.2);
   prot.setPosition(0, 0);
   prot.setStatic(false);
   prot.setGrabbable(false);
@@ -30,10 +30,11 @@ void setBoxes() {
   level[2] = new FBox(800, 50);
   level[3] = new FBox(50, 800);
   
-  level[0].setPosition(width/2, height/8);
-  level[1].setPosition(width/8, height/2);
-  level[2].setPosition(width/2, height*7/8);
-  level[3].setPosition(width*7/8, height/2);
+  level[0].setPosition(width/2 - width/2, height/8 - height/2);
+  level[1].setPosition(width/8 - width/2, height/2 - height/2);
+  level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
+  level[3].setPosition(width*7/8 - width/2, height/2 - height/2);
+  
   
   
   for (int i = 0; i < 4; i++) {

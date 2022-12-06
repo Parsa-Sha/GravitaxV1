@@ -1,6 +1,5 @@
 import fisica.*;
 
-
 final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
@@ -8,11 +7,11 @@ final int GAMEWON = 3;
 final int GAMEOVER = 4;
 int mode = INTRO;
 
-
 FWorld world;
 FBox[] level;
 FCircle prot;
 
+PVector gravity = new PVector(0, 980);
 
 void setup() {
   size(800, 800);
