@@ -16,7 +16,7 @@ void setProt() {
   prot.setFillColor(0);
   prot.setFriction(1);
   prot.setFill(100, 0, 40);
-  prot.setRestitution(1.2);
+  prot.setRestitution(0.3);
   prot.setPosition(0, 0);
   prot.setStatic(false);
   prot.setGrabbable(false);
@@ -42,6 +42,7 @@ void setBoxes() {
     b.setStatic(true);
     b.setGrabbable(false);
     b.setVelocity(0, 0);
+    b.setFriction(4);
     b.setFill(255);
     world.add(b);
   }
