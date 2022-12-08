@@ -22,6 +22,10 @@ void setup() {
 }
 
 void draw() {
+  gamemode();
+}
+
+void gamemode() {
   switch (mode) {
   case INTRO:
     intro();
