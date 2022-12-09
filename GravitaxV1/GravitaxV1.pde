@@ -9,14 +9,17 @@ int mode = INTRO;
 
 FWorld world;
 FBox[] level;
+FBox goal;
 FCircle prot;
 
 PVector gravity = new PVector(0, 980);
 
+int currentLvl = 1;
+
 void setup() {
   size(800, 800);
   Fisica.init(this);
-  world = new FWorld();
+  world = new FWorld(-4000, -4000, 4000, 4000);
   frameRate(30);
   createStuff();
 }

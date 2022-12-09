@@ -30,3 +30,8 @@ boolean protContact(FBody deBody) {
   }
   return false;
 }
+
+boolean levelContact() {
+  if ((protContact(level[0]) || protContact(level[1]) || protContact(level[2]) || protContact(level[3]))) return true;
+  return false;
+}
