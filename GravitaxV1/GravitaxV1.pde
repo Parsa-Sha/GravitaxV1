@@ -10,6 +10,7 @@ int mode = INTRO;
 FWorld world;
 FBox[] level;
 FBox goal;
+FBox[] lava;
 FCircle prot;
 
 PVector gravity = new PVector(0, 980);

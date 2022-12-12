@@ -31,6 +31,13 @@ void setBoxes() {
   level[2] = new FBox(800, 50);
   level[3] = new FBox(50, 800);
   
+  lava = new FBox[20];
+  for (int i = 0; i < 20; i++) {
+    lava[i] = new FBox(50, 50);
+    lava[i].setSensor(true);
+    lava[i].setGrabbable(false);
+    lava[i].setStatic(true);
+  }
   
   level[0].setPosition(width/2 - width/2, height/8 - height/2);
   level[1].setPosition(width/8 - width/2, height/2 - height/2);
@@ -56,6 +63,7 @@ void setBoxes() {
   goal = new FBox(50, 50);
   goal.setSensor(true);
   goal.setStatic(true);
+  goal.setGrabbable(false);
   goal.setPosition(width/2-75, height/2-75);
   goal.setFillColor(color(0, 200, 0, 50));
   world.add(goal);
