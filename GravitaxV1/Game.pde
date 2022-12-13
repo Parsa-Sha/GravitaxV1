@@ -30,7 +30,7 @@ void game() {
   
   if (goal.isTouchingBody(prot)) {
     currentLvl++;
-    prot.setPosition(0, 0);
+    prot.setPosition(home.getX(), home.getY());
     prot.setVelocity(0, 0);
   }
 

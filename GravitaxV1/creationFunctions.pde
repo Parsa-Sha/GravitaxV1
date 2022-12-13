@@ -39,10 +39,10 @@ void setBoxes() {
     lava[i].setStatic(true);
   }
   
-  level[0].setPosition(width/2 - width/2, height/8 - height/2);
-  level[1].setPosition(width/8 - width/2, height/2 - height/2);
-  level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
-  level[3].setPosition(width*7/8 - width/2, height/2 - height/2);
+  //level[0].setPosition(width/2 - width/2, height/8 - height/2);
+  //level[1].setPosition(width/8 - width/2, height/2 - height/2);
+  //level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
+  //level[3].setPosition(width*7/8 - width/2, height/2 - height/2);
   
   level[0].setPosition(0, -height/2+25);
   level[1].setPosition(-width/2+25, 0);
@@ -59,6 +59,15 @@ void setBoxes() {
     b.setFill(255);
     world.add(b);
   }
+  
+  home = new FBox(50, 50);
+  home.setSensor(true);
+  home.setStatic(true);
+  home.setGrabbable(false);
+  home.setPosition(0, 0);
+  home.setFillColor(color(200, 200, 0, 50));
+  world.add(home);
+
   
   goal = new FBox(50, 50);
   goal.setSensor(true);

@@ -10,6 +10,7 @@ int mode = INTRO;
 FWorld world;
 FBox[] level;
 FBox goal;
+FBox home;
 FBox[] lava;
 FCircle prot;
 
