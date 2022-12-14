@@ -37,7 +37,12 @@ void setBoxes() {
     lava[i].setSensor(true);
     lava[i].setGrabbable(false);
     lava[i].setStatic(true);
+    lava[i].setFillColor(color(200, 0, 0, 50));
+    lava[i].setPosition(-2000, 2000);
+    world.add(lava[i]);
   }
+  
+  lava[0].setPosition(-200, 200);
   
   //level[0].setPosition(width/2 - width/2, height/8 - height/2);
   //level[1].setPosition(width/8 - width/2, height/2 - height/2);
