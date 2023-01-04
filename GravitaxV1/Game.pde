@@ -13,25 +13,31 @@ void game() {
 
   world.draw();
   world.step();
-  
+
   /*
   rectMode(CENTER);
-  stroke(255, 50);
-  fill(0, 200, 0, 50);
-  rect(width/2-75, height/2-75, 50, 50);
-  
-  if (dist(width/2-75, height/2-75, prot.getX(), prot.getY()) < 2) {
-    currentLvl++;
-    prot.setPosition(0, 0);
-    prot.setVelocity(0, 0);
-  }
-  
-  */
-  
+   stroke(255, 50);
+   fill(0, 200, 0, 50);
+   rect(width/2-75, height/2-75, 50, 50);
+   
+   if (dist(width/2-75, height/2-75, prot.getX(), prot.getY()) < 2) {
+   currentLvl++;
+   prot.setPosition(0, 0);
+   prot.setVelocity(0, 0);
+   }
+   
+   */
+
+  // If hit goal
   if (goal.isTouchingBody(prot)) {
-    currentLvl++;
-    prot.setPosition(home.getX(), home.getY());
-    prot.setVelocity(0, 0);
+    nextLvl();
+  }
+
+  for (int i = 0; i < lava.length; i++) {
+    if (lava[i].isTouchingBody(prot)) {
+      restartLvl();
+      break;
+    }
   }
 
   popMatrix();
@@ -47,13 +53,35 @@ void game() {
   world.setGravity(gravity.x, gravity.y);
 }
 
+void nextLvl() {
+  gravity = new PVector(0, 980);
+  currentLvl++;
+  prot.setPosition(home.getX(), home.getY());
+  prot.setVelocity(0, 0);
+  prot.setAngularVelocity(0);
+}
+
+void restartLvl() {
+  gravity = new PVector(0, 980);
+  prot.setPosition(home.getX(), home.getY());
+  prot.setVelocity(0, 0);
+  prot.setAngularVelocity(0);
+}
+
+
+
+
+
+
+
+
 void keyAndMouseFunctions() {
 
   pmr();
   pkr();
 
   if (keyPressed) {
-    if (keyCode == UP && !levelContact()) { // Gravity Switch, only works when Protagonist isnt touching ground
+    if (keyCode == UP && !levelContact()) { // Gravity Switch, only works when Protagonist is in the air
       gravity = new PVector(0, -980);
     }
     if (keyCode == DOWN && !levelContact()) {
