@@ -56,6 +56,7 @@ void game() {
 void nextLvl() {
   gravity = new PVector(0, 980);
   currentLvl++;
+  updateMap();
   prot.setPosition(home.getX(), home.getY());
   prot.setVelocity(0, 0);
   prot.setAngularVelocity(0);
@@ -93,7 +94,10 @@ void keyAndMouseFunctions() {
     if (keyCode == RIGHT && !levelContact()) {
       gravity = new PVector(980, 0);
     }
-
+    
+    
+    if (key == 'h' || key == 'H') updateMap();
+    
     if (key == 'W' || key == 'w') {
       if (levelContact()) {
         instantVel = new PVector(prot.getVelocityX(), -500);

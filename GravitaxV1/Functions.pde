@@ -35,3 +35,43 @@ boolean levelContact() {
   if ((protContact(level[0]) || protContact(level[1]) || protContact(level[2]) || protContact(level[3]))) return true;
   return false;
 }
+
+void updateMap() {
+  PImage lvlImg = lvls.get(currentLvl-1); // Get current lvl img
+  for (int i = 0; i < 14; i++) {
+    for (int j = 0; j < 14; j++) {
+      
+      
+      
+      color c = lvlImg.get(i, j);
+      
+      println(c);
+      
+      if (c == color(0)) {
+      
+      }
+      
+      if (c == color(255, 0, 0)) {
+        
+      }
+      
+      if (c == color(255)) {
+        
+      }
+      
+      if (c == color(0, 255, 0)) {
+        goal.setPosition(50*i-200, 50*j-400);
+        println(50*i-200, 50*j-400);
+      }
+      
+      if (c == color(0, 0, 255)) {
+        home.setPosition(50*i-200, 50*j-400);
+      }
+      
+      
+      
+      
+      
+    }
+  }
+}

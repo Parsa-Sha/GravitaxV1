@@ -16,6 +16,8 @@ FCircle prot;
 
 PVector gravity = new PVector(0, 980);
 
+ArrayList<PImage> lvls = new ArrayList<PImage>();
+
 int currentLvl = 1;
 
 void setup() {
@@ -24,6 +26,7 @@ void setup() {
   world = new FWorld(-4000, -4000, 4000, 4000);
   frameRate(30);
   createStuff();
+  loadImgs();
 }
 
 void draw() {
@@ -49,5 +52,12 @@ void gamemode() {
     break;
   default:
     println("MODE ERROR. MODE = " + mode);
+  }
+}
+
+void loadImgs(){
+  for (int i = 0; i < 1; i++) {
+    PImage img = loadImage("/levels/lvl" + (i+1) + ".png");
+    lvls.add(img);
   }
 }
