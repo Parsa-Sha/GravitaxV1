@@ -12,6 +12,7 @@ FBox[] level;
 FBox goal;
 FBox home;
 FBox[] lava;
+FBox[] block;
 FCircle prot;
 
 PVector gravity = new PVector(0, 980);

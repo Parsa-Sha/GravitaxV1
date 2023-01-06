@@ -31,6 +31,16 @@ void setBoxes() {
   level[2] = new FBox(800, 50);
   level[3] = new FBox(50, 800);
   
+  for (int i = 0; i < 4; i++) {
+    FBox b = level[i];
+    b.setStatic(true);
+    b.setGrabbable(false);
+    b.setVelocity(0, 0);
+    b.setFriction(6);
+    b.setFill(255);
+    world.add(b);
+  } 
+  
   lava = new FBox[20];
   for (int i = 0; i < 20; i++) {
     lava[i] = new FBox(50, 50);
@@ -44,6 +54,17 @@ void setBoxes() {
   
   lava[0].setPosition(-200, 200);
   
+  block = new FBox[20];
+  for (int i = 0; i < 20; i++) {
+    block[i] = new FBox(50, 50);
+    block[i].setGrabbable(false);
+    block[i].setStatic(true);
+    block[i].setFill(255);
+    block[i].setPosition(-2000, -2000);
+    block[i].setStrokeColor(255);
+    world.add(block[i]);
+  }
+  
   //level[0].setPosition(width/2 - width/2, height/8 - height/2);
   //level[1].setPosition(width/8 - width/2, height/2 - height/2);
   //level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
@@ -55,15 +76,7 @@ void setBoxes() {
   level[3].setPosition(width/2-25, 0);
   
   
-  for (int i = 0; i < 4; i++) {
-    FBox b = level[i];
-    b.setStatic(true);
-    b.setGrabbable(false);
-    b.setVelocity(0, 0);
-    b.setFriction(6);
-    b.setFill(255);
-    world.add(b);
-  }
+
   
   home = new FBox(50, 50);
   home.setSensor(true);
