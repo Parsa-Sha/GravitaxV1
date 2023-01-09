@@ -1,7 +1,7 @@
 void createStuff() {
   setWorld();
-  setProt();
   setBoxes();
+  setProt();
 }
 
 void setWorld() {
@@ -15,7 +15,7 @@ void setProt() {
   prot.setFriction(4);
   prot.setFill(100, 0, 40);
   prot.setRestitution(0.3);
-  prot.setPosition(0, 0);
+  prot.setPosition(home.getX(), home.getY());
   prot.setStatic(false);
   prot.setGrabbable(false);
   world.add(prot);

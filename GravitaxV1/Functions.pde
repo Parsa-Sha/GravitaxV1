@@ -83,4 +83,6 @@ void updateMap() {
       }
     }
   }
+  
+  prot.setPosition(home.getX(), home.getY());
 }

@@ -20,6 +20,8 @@ PVector gravity = new PVector(0, 980);
 ArrayList<PImage> lvls = new ArrayList<PImage>();
 
 int currentLvl = 1;
+int gravLimit = 1;
+int gravSwitches = 0;
 
 void setup() {
   size(800, 800);

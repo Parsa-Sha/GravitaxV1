@@ -9,38 +9,12 @@ void game() {
 
   pushMatrix();
   translate(worldPos.x, worldPos.y);
-  //rotate(theta);
-
   world.draw();
   world.step();
-
-  /*
-  rectMode(CENTER);
-   stroke(255, 50);
-   fill(0, 200, 0, 50);
-   rect(width/2-75, height/2-75, 50, 50);
-   
-   if (dist(width/2-75, height/2-75, prot.getX(), prot.getY()) < 2) {
-   currentLvl++;
-   prot.setPosition(0, 0);
-   prot.setVelocity(0, 0);
-   }
-   
-   */
-
-  // If hit goal
-  if (goal.isTouchingBody(prot)) {
-    nextLvl();
-  }
-
-  for (int i = 0; i < lava.length; i++) {
-    if (lava[i].isTouchingBody(prot)) {
-      restartLvl();
-      break;
-    }
-  }
-
   popMatrix();
+  
+  
+  lvlContacts();
 
   textSize(30);
   fill(150);
@@ -69,34 +43,49 @@ void restartLvl() {
   prot.setAngularVelocity(0);
 }
 
+void lvlContacts() {
+    
+  // If hit goal
+  if (goal.isTouchingBody(prot)) {
+    nextLvl();
+  }
 
-
-
-
-
-
+  for (int i = 0; i < lava.length; i++) {
+    if (lava[i].isTouchingBody(prot)) {
+      restartLvl();
+      break;
+    }
+  }
+}
 
 void keyAndMouseFunctions() {
 
   pmr();
   pkr();
-
+  
+  if (levelContact()) {
+    gravSwitches = gravLimit;
+  }
+  
   if (keyPressed) {
-    if (keyCode == UP && !levelContact()) { // Gravity Switch, only works when Protagonist is in the air
+    if (keyCode == UP && !levelContact() && gravSwitches != 0) { // Gravity Switch, only works when Protagonist is in the air
       gravity = new PVector(0, -980);
+      gravSwitches--;
     }
-    if (keyCode == DOWN && !levelContact()) {
+    if (keyCode == DOWN && !levelContact() && gravSwitches != 0) {
       gravity = new PVector(0, 980);
+      gravSwitches--;
     }
-    if (keyCode == LEFT && !levelContact()) {
+    if (keyCode == LEFT && !levelContact() && gravSwitches != 0) {
       gravity = new PVector(-980, 0);
+      gravSwitches--;
     }
-    if (keyCode == RIGHT && !levelContact()) {
+    if (keyCode == RIGHT && !levelContact() && gravSwitches != 0) {
       gravity = new PVector(980, 0);
+      gravSwitches--;
     }
     
-    
-    if (key == 'h' || key == 'H') updateMap();
+    if (key == 'h' || key == 'H') updateMap(); // Remove this once finished
     
     if (key == 'W' || key == 'w') {
       if (levelContact()) {
