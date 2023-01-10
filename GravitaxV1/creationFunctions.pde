@@ -26,10 +26,10 @@ int bh = 50;
 
 void setBoxes() {
   level = new FBox[4];
-  level[0] = new FBox(800, 50);
-  level[1] = new FBox(50, 800);
-  level[2] = new FBox(800, 50);
-  level[3] = new FBox(50, 800);
+  level[0] = new FBox(850, 50);
+  level[1] = new FBox(50, 850);
+  level[2] = new FBox(850, 50);
+  level[3] = new FBox(50, 850);
   
   for (int i = 0; i < 4; i++) {
     FBox b = level[i];
@@ -52,7 +52,7 @@ void setBoxes() {
     world.add(lava[i]);
   }
   
-  lava[0].setPosition(-200, 200);
+  //lava[0].setPosition(-200, 200);
   
   block = new FBox[20];
   for (int i = 0; i < 20; i++) {
@@ -70,10 +70,10 @@ void setBoxes() {
   //level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
   //level[3].setPosition(width*7/8 - width/2, height/2 - height/2);
   
-  level[0].setPosition(0, -height/2+25);
-  level[1].setPosition(-width/2+25, 0);
-  level[2].setPosition(0, height/2-25);
-  level[3].setPosition(width/2-25, 0);
+  level[0].setPosition(0, -height/2);
+  level[1].setPosition(-width/2, 0);
+  level[2].setPosition(0, height/2);
+  level[3].setPosition(width/2, 0);
   
   
 

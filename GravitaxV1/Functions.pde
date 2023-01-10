@@ -41,8 +41,6 @@ boolean levelContact() {
     if (protContact(block[i])) return true;
   }
   
-  
-  //if ((protContact(level[0]) || protContact(level[1]) || protContact(level[2]) || protContact(level[3]))) return true;
   return false;
 }
 
@@ -52,34 +50,26 @@ void updateMap() {
   int blockI = 0;
 
   PImage lvlImg = lvls.get(currentLvl-1); // Get current lvl img
-  for (int i = 0; i < 14; i++) {
-    for (int j = 0; j < 14; j++) {
-
-
-
+  for (int i = 0; i < 15; i++) {
+    for (int j = 0; j < 15; j++) {
       color c = lvlImg.get(i, j);
 
-
-      if (c == color(0)) {
-      
-      }
-
       if (c == color(255, 0, 0)) {
-        lava[lavaI].setPosition(50*i-width/2 + 75, 50*j-height/2 + 75);
+        lava[lavaI].setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);
         lavaI++;
       }
 
       if (c == color(255)) {
-        block[blockI].setPosition(50*i-width/2 + 75, 50*j-height/2 + 75);
+        block[blockI].setPosition(50*i-width/2 + 50, 50*j-height/2 + 50);
         blockI++;
       }
 
       if (c == color(0, 255, 0)) {
-        goal.setPosition(50*i-width/2 + 75, 50*j-height/2 + 75);
+        goal.setPosition(50*i-width/2 + 50, 50*j-height/2 + 50);
       }
 
       if (c == color(0, 0, 255)) {
-        home.setPosition(50*i-width/2 + 75, 50*j-height/2 + 75);
+        home.setPosition(50*i-width/2 + 50, 50*j-height/2 + 50 - 1);
       }
     }
   }
