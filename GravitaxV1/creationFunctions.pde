@@ -30,6 +30,11 @@ void setBoxes() {
   level[1] = new FBox(50, 850);
   level[2] = new FBox(850, 50);
   level[3] = new FBox(50, 850);
+    
+  level[0].setPosition(0, -height/2);
+  level[1].setPosition(-width/2, 0);
+  level[2].setPosition(0, height/2);
+  level[3].setPosition(width/2, 0);
   
   for (int i = 0; i < 4; i++) {
     FBox b = level[i];
@@ -65,17 +70,13 @@ void setBoxes() {
     world.add(block[i]);
   }
   
-  //level[0].setPosition(width/2 - width/2, height/8 - height/2);
-  //level[1].setPosition(width/8 - width/2, height/2 - height/2);
-  //level[2].setPosition(width/2 - width/2, height*7/8 - height/2);
-  //level[3].setPosition(width*7/8 - width/2, height/2 - height/2);
-  
-  level[0].setPosition(0, -height/2);
-  level[1].setPosition(-width/2, 0);
-  level[2].setPosition(0, height/2);
-  level[3].setPosition(width/2, 0);
+  redSwitch = new FBox(50, 50);
+  blueSwitch = new FBox(50, 50);
   
   
+  for (int i = 0; i < 20; i++) {
+    
+  }
 
   
   home = new FBox(50, 50);

@@ -13,6 +13,12 @@ FBox goal;
 FBox home;
 FBox[] lava;
 FBox[] block;
+FBox redSwitch;
+FBox blueSwitch;
+FBox[] redBlock;
+FBox[] blueBlock;
+
+
 FCircle prot;
 
 PVector gravity = new PVector(0, 980);
@@ -59,7 +65,7 @@ void gamemode() {
 }
 
 void loadImgs(){
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 5; i++) {
     PImage img = loadImage("/levels/lvl" + (i+1) + ".png");
     lvls.add(img);
   }

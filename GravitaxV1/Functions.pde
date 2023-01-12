@@ -50,6 +50,12 @@ void updateMap() {
   int blockI = 0;
 
   PImage lvlImg = lvls.get(currentLvl-1); // Get current lvl img
+  for (int i = 0; i < 20; i++) {
+    lava[i].setPosition(-2000, 2000);
+    block[i].setPosition(-2000, 2000);
+    
+  }
+  
   for (int i = 0; i < 15; i++) {
     for (int j = 0; j < 15; j++) {
       color c = lvlImg.get(i, j);
@@ -61,6 +67,7 @@ void updateMap() {
 
       if (c == color(255)) {
         block[blockI].setPosition(50*i-width/2 + 50, 50*j-height/2 + 50);
+        //if (lvlImg.get(i, j+1))
         blockI++;
       }
 

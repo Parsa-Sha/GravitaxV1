@@ -89,30 +89,30 @@ void keyAndMouseFunctions() {
     
     if (key == 'W' || key == 'w') {
       if (levelContact()) {
-        instantVel = new PVector(prot.getVelocityX(), -500);
-        //instantVel.rotate(-theta);
-        prot.setVelocity(instantVel.x, instantVel.y);
+        instantVel = new PVector(prot.getVelocityX(), -450);
+        //prot.setVelocity(instantVel.x, instantVel.y);
+        prot.addImpulse(0, -1000);
       }
     }
     if (key == 'S' || key == 's') {
       if (levelContact()) {
-        instantVel = new PVector(prot.getVelocityX(), 500);
-        //instantVel.rotate(-theta);
-        prot.setVelocity(instantVel.x, instantVel.y);
+        instantVel = new PVector(prot.getVelocityX(), 450);
+        //prot.setVelocity(instantVel.x, instantVel.y);
+        prot.addImpulse(0, 1000);
       }
     }
     if (key == 'A' || key == 'a') {
       if (levelContact()) {
-        instantVel = new PVector(-500, prot.getVelocityY());
-        //instantVel.rotate(-theta);
-        prot.setVelocity(instantVel.x, instantVel.y);
+        instantVel = new PVector(-450, prot.getVelocityY());
+        //prot.setVelocity(instantVel.x, instantVel.y);
+        prot.addImpulse(-1000, 0);
       }
     }
     if (key == 'D' || key == 'd') {
       if (levelContact()) {
-        instantVel = new PVector(500, prot.getVelocityY());
-        //instantVel.rotate(-theta);
-        prot.setVelocity(instantVel.x, instantVel.y);
+        instantVel = new PVector(450, prot.getVelocityY());
+        //prot.setVelocity(instantVel.x, instantVel.y);
+        prot.addImpulse(1000, 0);
       }
     }
 
