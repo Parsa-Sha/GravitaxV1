@@ -18,6 +18,7 @@ FBox blueSwitch;
 FBox[] redBlock;
 FBox[] blueBlock;
 
+ArrayList<FBox> switches;
 
 FCircle prot;
 
