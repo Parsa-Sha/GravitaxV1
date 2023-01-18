@@ -13,10 +13,6 @@ FBox goal;
 FBox home;
 FBox[] lava;
 FBox[] block;
-FBox redSwitch;
-FBox blueSwitch;
-FBox[] redBlock;
-FBox[] blueBlock;
 
 ArrayList<FBox> switches;
 
@@ -25,6 +21,8 @@ FCircle prot;
 PVector gravity = new PVector(0, 980);
 
 ArrayList<PImage> lvls = new ArrayList<PImage>();
+
+PImage[] imgs = new PImage[8];
 
 int currentLvl = 1;
 int gravLimit = 1;
@@ -66,8 +64,19 @@ void gamemode() {
 }
 
 void loadImgs(){
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 6; i++) {
     PImage img = loadImage("/levels/lvl" + (i+1) + ".png");
     lvls.add(img);
   }
+  
+  imgs[0] = loadImage("/data/redBlockOff.png");
+  imgs[1] = loadImage("/data/redBlockOn.png");
+  imgs[2] = loadImage("/data/blueBlockOff.png");
+  imgs[3] = loadImage("/data/blueBlockOn.png");
+  
+  imgs[4] = loadImage("data/redSwitchOff.png");
+  imgs[5] = loadImage("data/redSwitchOn.png");
+  imgs[6] = loadImage("data/blueSwitchOff.png");
+  imgs[7] = loadImage("data/blueSwitchOn.png");
+  
 }

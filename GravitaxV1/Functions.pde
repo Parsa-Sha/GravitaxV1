@@ -48,35 +48,65 @@ void updateMap() {
 
   int lavaI = 0;
   int blockI = 0;
+  int redI = 0;
+  int blueI = 0;
 
   PImage lvlImg = lvls.get(currentLvl-1); // Get current lvl img
   for (int i = 0; i < 20; i++) {
     lava[i].setPosition(-2000, 2000);
     block[i].setPosition(-2000, 2000);
     
+    
   }
+  
+  for (int i = 0; i < switches.size(); i++) switches.get(i).setPosition(-2000, 2000);
+  
+  // Loop through imported image and find location
+  
+  
+  
+  // Maybe create when needed, set to position when created. Destroy all blocks before area
+  
   
   for (int i = 0; i < 15; i++) {
     for (int j = 0; j < 15; j++) {
       color c = lvlImg.get(i, j);
 
-      if (c == color(255, 0, 0)) {
+      if (c == color(255, 0, 0)) { // Lava
         lava[lavaI].setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);
         lavaI++;
       }
 
-      if (c == color(255)) {
+      if (c == color(255)) { // Blocks
         block[blockI].setPosition(50*i-width/2 + 50, 50*j-height/2 + 50);
-        //if (lvlImg.get(i, j+1))
         blockI++;
       }
 
-      if (c == color(0, 255, 0)) {
+      if (c == color(0, 255, 0)) { // Goal
         goal.setPosition(50*i-width/2 + 50, 50*j-height/2 + 50);
       }
 
-      if (c == color(0, 0, 255)) {
+      if (c == color(0, 0, 255)) { // Home
         home.setPosition(50*i-width/2 + 50, 50*j-height/2 + 50 - 1);
+      }
+      
+      if (c == color(100, 0, 0)) { // Red Switch Block
+        switches.get(2 + 2*redI).setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);
+        redI++;
+      }
+      
+      if (c == color(200, 0, 0)) { // Red Switch
+        switches.get(0).setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);
+      }
+      
+      if (c == color(0, 0, 100)) { // Blue Switch Block
+        switches.get(3 + 2*blueI).setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);  
+        blueI++;
+        println(((SwitchBlock) switches.get(2 + 2*blueI)).id);
+      }
+      
+      if (c == color(0, 0, 200)) { // Blue Switch
+        switches.get(1).setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);
       }
     }
   }

@@ -10,7 +10,7 @@ class SwitchBlock extends FBox {
     state = defaultState;
     imgs[0] = off;
     imgs[1] = on;
-    
+    this.setStatic(true);
   }
   
   void act() {
@@ -18,16 +18,11 @@ class SwitchBlock extends FBox {
     display(); 
   }
   
-  void process() {
-    
-  }
+  void process() { }
   
   void display() {
-    this.attachImage(imgs[int(state)]);
+    this.attachImage(imgs[ int(state) ]);
+    println(int(state));
+    //this.setFill(0, 0, 255);
   }
-  
-  
-  
-  
-  
 }

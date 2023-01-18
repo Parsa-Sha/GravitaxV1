@@ -70,13 +70,35 @@ void setBoxes() {
     world.add(block[i]);
   }
   
-  redSwitch = new FBox(50, 50);
-  blueSwitch = new FBox(50, 50);
+  switches = new ArrayList<FBox>();
   
+  for (int i = 0; i < 2; i++) {
+    Switch a = new Switch(i, true, imgs[4 + i*2], imgs[5 + i*2]);
+    switches.add(a);
+    world.add(a);
+  }
+  
+  
+  
+  //switches.add(new Switch(0, true, imgs[4], imgs[5])); // Red Switch
+  //switches.add(new Switch(1, true, imgs[6], imgs[7])); // Blue Switch
   
   for (int i = 0; i < 20; i++) {
+    SwitchBlock b = new SwitchBlock(0, true, imgs[0], imgs[1]);
+    SwitchBlock c = new SwitchBlock(1, true, imgs[2], imgs[3]);
+    
+    switches.add(b);
+    switches.add(c);
+    
+    world.add(b);
+    world.add(c);
+    
+    //switches.add(new SwitchBlock(0, true, imgs[0], imgs[1])); 
+    //switches.add(new SwitchBlock(1, true, imgs[2], imgs[3]));
     
   }
+  
+  
 
   
   home = new FBox(50, 50);

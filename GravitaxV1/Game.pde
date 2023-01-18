@@ -25,6 +25,16 @@ void game() {
   //lines();
 
   world.setGravity(gravity.x, gravity.y);
+  
+  for (int i = 0; i < switches.size(); i++) { // Actions of all switches
+    if (switches.get(i) instanceof Switch) {
+      ((Switch) switches.get(i)).act();
+    }
+    
+    if (switches.get(i) instanceof SwitchBlock) {
+      ((SwitchBlock) switches.get(i)).act();
+    }
+  }
 }
 
 void nextLvl() {
@@ -90,29 +100,29 @@ void keyAndMouseFunctions() {
     if (key == 'W' || key == 'w') {
       if (levelContact()) {
         instantVel = new PVector(prot.getVelocityX(), -450);
-        //prot.setVelocity(instantVel.x, instantVel.y);
-        prot.addImpulse(0, -1000);
+        prot.setVelocity(instantVel.x, instantVel.y);
+        //prot.addImpulse(0, -100);
       }
     }
     if (key == 'S' || key == 's') {
       if (levelContact()) {
         instantVel = new PVector(prot.getVelocityX(), 450);
-        //prot.setVelocity(instantVel.x, instantVel.y);
-        prot.addImpulse(0, 1000);
+        prot.setVelocity(instantVel.x, instantVel.y);
+        //prot.addImpulse(0, 100);
       }
     }
     if (key == 'A' || key == 'a') {
       if (levelContact()) {
         instantVel = new PVector(-450, prot.getVelocityY());
-        //prot.setVelocity(instantVel.x, instantVel.y);
-        prot.addImpulse(-1000, 0);
+        prot.setVelocity(instantVel.x, instantVel.y);
+        //prot.addImpulse(-100, 0);
       }
     }
     if (key == 'D' || key == 'd') {
       if (levelContact()) {
         instantVel = new PVector(450, prot.getVelocityY());
-        //prot.setVelocity(instantVel.x, instantVel.y);
-        prot.addImpulse(1000, 0);
+        prot.setVelocity(instantVel.x, instantVel.y);
+        //prot.addImpulse(100, 0);
       }
     }
 
