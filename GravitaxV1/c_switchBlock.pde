@@ -18,11 +18,12 @@ class SwitchBlock extends FBox {
     display(); 
   }
   
-  void process() { }
+  void process() {
+    this.setSensor(!state);
+  }
   
   void display() {
     this.attachImage(imgs[ int(state) ]);
-    println(int(state));
     //this.setFill(0, 0, 255);
   }
 }

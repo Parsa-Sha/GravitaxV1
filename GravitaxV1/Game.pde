@@ -2,6 +2,8 @@
 PVector instantVel;
 PVector worldPos;
 
+int c = 0;
+
 void game() {
   background(0);
 
@@ -24,6 +26,18 @@ void game() {
   keyAndMouseFunctions();
   //lines();
 
+  
+  println(c);
+  c++;
+  if (c > 200) {
+    prot.attachImage(protImgs[floor(map(c, 200, 400, 0, 8))]);
+    if (c > 400) {
+      c = 0;
+      prot.setFill(100, 0, 40);
+      prot.dettachImage();
+    }
+  }
+
   world.setGravity(gravity.x, gravity.y);
   
   for (int i = 0; i < switches.size(); i++) { // Actions of all switches
@@ -44,6 +58,8 @@ void nextLvl() {
   prot.setPosition(home.getX(), home.getY());
   prot.setVelocity(0, 0);
   prot.setAngularVelocity(0);
+  ((Switch) switches.get(0)).state = true;
+  ((Switch) switches.get(1)).state = true;
 }
 
 void restartLvl() {
@@ -51,6 +67,8 @@ void restartLvl() {
   prot.setPosition(home.getX(), home.getY());
   prot.setVelocity(0, 0);
   prot.setAngularVelocity(0);
+  ((Switch) switches.get(0)).state = true;
+  ((Switch) switches.get(1)).state = true;
 }
 
 void lvlContacts() {
@@ -95,7 +113,7 @@ void keyAndMouseFunctions() {
       gravSwitches--;
     }
     
-    if (key == 'h' || key == 'H') updateMap(); // Remove this once finished
+    if (key == 'R' || key == 'r') restartLvl();
     
     if (key == 'W' || key == 'w') {
       if (levelContact()) {

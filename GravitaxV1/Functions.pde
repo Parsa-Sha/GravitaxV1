@@ -41,6 +41,20 @@ boolean levelContact() {
     if (protContact(block[i])) return true;
   }
   
+  for (int i = 0; i < switches.size(); i++) {
+    if (switches.get(i) instanceof SwitchBlock) {
+      if (((SwitchBlock) switches.get(i)).state) {
+        if (protContact(((SwitchBlock) switches.get(i)))) return true;
+      }
+    }
+    
+    if (switches.get(i) instanceof Switch) {
+      if (protContact(switches.get(i))) return true;
+    }
+    
+    
+  }
+  
   return false;
 }
 
@@ -55,20 +69,14 @@ void updateMap() {
   for (int i = 0; i < 20; i++) {
     lava[i].setPosition(-2000, 2000);
     block[i].setPosition(-2000, 2000);
-    
-    
   }
   
   for (int i = 0; i < switches.size(); i++) switches.get(i).setPosition(-2000, 2000);
   
-  // Loop through imported image and find location
+  // Maybe create when needed, set to position when created. Destroy all blocks before new lvl
   
   
-  
-  // Maybe create when needed, set to position when created. Destroy all blocks before area
-  
-  
-  for (int i = 0; i < 15; i++) {
+  for (int i = 0; i < 15; i++) { // Loop through imported image and find location
     for (int j = 0; j < 15; j++) {
       color c = lvlImg.get(i, j);
 
@@ -102,7 +110,6 @@ void updateMap() {
       if (c == color(0, 0, 100)) { // Blue Switch Block
         switches.get(3 + 2*blueI).setPosition(50*i-width/2 + 50 - 1, 50*j-height/2 + 50);  
         blueI++;
-        println(((SwitchBlock) switches.get(2 + 2*blueI)).id);
       }
       
       if (c == color(0, 0, 200)) { // Blue Switch
