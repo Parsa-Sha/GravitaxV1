@@ -84,4 +84,5 @@ void loadImgs(){
   for (int i = 0; i < 5; i++) protImgs[i] = loadImage("data/prot" + i + ".png");
   for (int i = 0; i < 4; i++) protImgs[5+i] = loadImage("data/prot" + (4-i) + ".png");
   
+  
 }

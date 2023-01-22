@@ -24,38 +24,34 @@ class Switch extends FBox {
   int s;
 
   void process() {
-
-    s = 0;
     c = false;
-    if (protContact(this)) b = true;
+    if (protContact(this)) b = true; // Check if prot entered and left switch
     if (b && !protContact(this)) {
       c = true;
       b = false;
     }
 
+    if (c) { // Switch state of any switchblocks
+      changeState();
+    }
+  }
+
+  void changeState() {
     for (int i = 0; i < switches.size(); i++) {
       if (switches.get(i) instanceof SwitchBlock && ((SwitchBlock)switches.get(i)).id == id) {
         SwitchBlock a = ((SwitchBlock)switches.get(i));
 
-
-        if (c) { // Switch state of any switchblocks
-          a.state = !a.state;
-          s++;
-        }
-        
+        a.state = !a.state;
+        s++;
       }
     }
     
-    if (s > 0) { // Switch state of self
-      s = 0;
-      state = !state;
-    }
+    state = !state;
   }
-
 
   void display() {
     this.attachImage(imgs[ int(state) ]);
-    
+
     //this.setFill(0, 0, 100);
   }
 }

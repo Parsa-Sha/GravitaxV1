@@ -52,14 +52,19 @@ void game() {
 }
 
 void nextLvl() {
-  gravity = new PVector(0, 980);
+  
   currentLvl++;
   updateMap();
+  
+  restartLvl();
+  /*
+  gravity = new PVector(0, 980);
   prot.setPosition(home.getX(), home.getY());
   prot.setVelocity(0, 0);
   prot.setAngularVelocity(0);
-  ((Switch) switches.get(0)).state = true;
-  ((Switch) switches.get(1)).state = true;
+  if (!((Switch) switches.get(0)).state) ((Switch) switches.get(0)).changeState();
+  if (!((Switch) switches.get(1)).state) ((Switch) switches.get(1)).changeState();
+  */
 }
 
 void restartLvl() {
@@ -67,8 +72,8 @@ void restartLvl() {
   prot.setPosition(home.getX(), home.getY());
   prot.setVelocity(0, 0);
   prot.setAngularVelocity(0);
-  ((Switch) switches.get(0)).state = true;
-  ((Switch) switches.get(1)).state = true;
+  if (!((Switch) switches.get(0)).state) ((Switch) switches.get(0)).changeState();
+  if (!((Switch) switches.get(1)).state) ((Switch) switches.get(1)).changeState();
 }
 
 void lvlContacts() {
