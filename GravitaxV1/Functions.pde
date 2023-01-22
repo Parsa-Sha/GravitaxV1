@@ -52,7 +52,6 @@ boolean levelContact() {
       if (protContact(switches.get(i))) return true;
     }
     
-    
   }
   
   return false;

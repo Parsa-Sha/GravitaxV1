@@ -24,14 +24,12 @@ void game() {
 
 
   keyAndMouseFunctions();
-  //lines();
-
   
   println(c);
   c++;
   if (c > 200) {
-    prot.attachImage(protImgs[floor(map(c, 200, 400, 0, 8))]);
-    if (c > 400) {
+    prot.attachImage(protImgs[floor(map(c, 200, 600, 0, 11))]);
+    if (c >= 600) {
       c = 0;
       prot.setFill(100, 0, 40);
       prot.dettachImage();
@@ -52,19 +50,9 @@ void game() {
 }
 
 void nextLvl() {
-  
   currentLvl++;
   updateMap();
-  
   restartLvl();
-  /*
-  gravity = new PVector(0, 980);
-  prot.setPosition(home.getX(), home.getY());
-  prot.setVelocity(0, 0);
-  prot.setAngularVelocity(0);
-  if (!((Switch) switches.get(0)).state) ((Switch) switches.get(0)).changeState();
-  if (!((Switch) switches.get(1)).state) ((Switch) switches.get(1)).changeState();
-  */
 }
 
 void restartLvl() {
@@ -165,28 +153,4 @@ void keyAndMouseFunctions() {
      
      */
   }
-}
-
-void lines() {
-
-  //line(prot.getX(), prot.getY(), gravity.x, gravity.y);
-  //line(prot.getX()-50, prot.getY(), gravity.x-50, gravity.y);
-  //line(prot.getX()+50, prot.getY(), gravity.x+50, gravity.y);
-
-  //line(prot.getY(), prot.getX(), gravity.y, gravity.x);
-  //line(prot.getY()-50, prot.getX(), gravity.y-50, gravity.x);
-  //line(prot.getY()+50, prot.getX(), gravity.y+50, gravity.x);
-
-
-  strokeWeight(5);
-  stroke(255, 0, 0);
-
-  line(abs(prot.getX()), abs(prot.getY()), abs(gravity.x), abs(gravity.y));
-  line(abs(prot.getX()-50), abs(prot.getY()), abs(gravity.x-50), abs(gravity.y));
-  line(abs(prot.getX()+50), abs(prot.getY()), abs(gravity.x+50), abs(gravity.y));
-
-
-  line(abs(prot.getY()), abs(prot.getX()), abs(gravity.y), abs(gravity.x));
-  line(abs(prot.getY()), abs(prot.getX()-50), abs(gravity.y-50), abs(gravity.x));
-  line(abs(prot.getY()), abs(prot.getX()+50), abs(gravity.y+50), abs(gravity.x));
 }

@@ -23,7 +23,7 @@ PVector gravity = new PVector(0, 980);
 ArrayList<PImage> lvls = new ArrayList<PImage>();
 
 PImage[] imgs = new PImage[8];
-PImage[] protImgs = new PImage[9];
+PImage[] protImgs = new PImage[12];
 
 int currentLvl = 1;
 int gravLimit = 1;
@@ -81,8 +81,8 @@ void loadImgs(){
   imgs[6] = loadImage("data/blueSwitchOff.png");
   imgs[7] = loadImage("data/blueSwitchOn.png");
   
-  for (int i = 0; i < 5; i++) protImgs[i] = loadImage("data/prot" + i + ".png");
-  for (int i = 0; i < 4; i++) protImgs[5+i] = loadImage("data/prot" + (4-i) + ".png");
+  for (int i = 0; i < 7; i++) protImgs[i] = loadImage("data/prot" + i + ".png");
+  for (int i = 0; i < 6; i++) protImgs[5+i] = loadImage("data/prot" + (6-i) + ".png");
   
   
 }
