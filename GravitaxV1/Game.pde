@@ -1,4 +1,3 @@
-//float theta = 0;
 PVector instantVel;
 PVector worldPos;
 
@@ -22,10 +21,8 @@ void game() {
   fill(150);
   text("LVL: " + currentLvl, 50, 50);
 
-
   keyAndMouseFunctions();
   
-  println(c);
   c++;
   if (c > 200) {
     prot.attachImage(protImgs[floor(map(c, 200, 600, 0, 11))]);
@@ -35,6 +32,8 @@ void game() {
       prot.dettachImage();
     }
   }
+  
+  
 
   world.setGravity(gravity.x, gravity.y);
   
@@ -47,6 +46,18 @@ void game() {
       ((SwitchBlock) switches.get(i)).act();
     }
   }
+  
+  for (int i = 0; i < enemies.size(); i++) {
+    enemies.get(i).show();
+    enemies.get(i).act();
+  }
+  
+  if (currentLvl == 7) {
+    enemies.get(0).setPosition((map((2 * c) % 600, 0, 600, -300, 300)), 150);
+  }
+  
+  
+  
 }
 
 void nextLvl() {
@@ -136,21 +147,5 @@ void keyAndMouseFunctions() {
         //prot.addImpulse(100, 0);
       }
     }
-
-
-    /*
-    
-     if (key == 'Q' || key == 'q') {
-     theta -= PI/200;
-     gravity.rotate(PI/200);
-     //worldPos.rotate(theta);
-     }
-     if (key == 'E' || key == 'e') {
-     theta += PI/200;
-     gravity.rotate(-PI/200);
-     //worldPos.rotate(theta);
-     }
-     
-     */
   }
 }
