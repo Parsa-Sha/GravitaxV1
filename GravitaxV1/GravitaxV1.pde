@@ -25,6 +25,7 @@ ArrayList<PImage> lvls = new ArrayList<PImage>();
 PImage[] imgs = new PImage[8];
 PImage[] protImgs = new PImage[12];
 PImage pawnImg;
+PImage[] queenImgs = new PImage[2];
 
 int currentLvl = 1;
 int gravLimit = 1;
@@ -82,5 +83,8 @@ void loadImgs(){
   for (int i = 0; i < 6; i++) protImgs[5+i] = loadImage("data/prot" + (6-i) + ".png");
   
   pawnImg = loadImage("data/pawn.png");
+  
+  queenImgs[0] = loadImage("data/queen0.png");
+  queenImgs[1] = loadImage("data/queen1.png");
   
 }

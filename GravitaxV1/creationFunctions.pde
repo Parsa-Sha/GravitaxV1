@@ -101,13 +101,27 @@ void setBoxes() {
   enemies = new ArrayList<Enemy>();
   
   Pawn a = new Pawn(pawnImg);
-  
+  Pawn b = new Pawn(pawnImg);
 
   a.setPosition(-2000, 2000);
   a.setStatic(true);
-
-    enemies.add(a);
+  
+  b.setPosition(2000, 2000);
+  b.setStatic(true);
+  
+  enemies.add(a);
   world.add(a);
+  
+  enemies.add(b);
+  world.add(b);
+  
+  Queen d = new Queen(queenImgs[0], queenImgs[1]);
+  
+  d.setPosition(-2000, 2000);
+  d.setStatic(true);
+  
+  enemies.add(d);
+  world.add(d);
 
   
   home = new FBox(50, 50);

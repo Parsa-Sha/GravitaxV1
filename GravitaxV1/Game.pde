@@ -53,10 +53,20 @@ void game() {
   }
   
   if (currentLvl == 7) {
-    enemies.get(0).setPosition((map((2 * c) % 600, 0, 600, -300, 300)), 150);
+    enemies.get(0).setPosition(   abs(map((2 * c) % 600, 0, 600, -600, 600)) - 300   , 150);
   }
   
+  if (currentLvl == 8) {
+    enemies.get(0).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , 100);
+    enemies.get(1).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , -100);
+    
+  }
   
+  if (currentLvl == 9) {
+    enemies.get(0).setPosition(-2000, 2000);
+    enemies.get(1).setPosition(-2000, 2000);
+    enemies.get(2).setPosition(0, 0);
+  }
   
 }
 
