@@ -32,8 +32,6 @@ void game() {
       prot.dettachImage();
     }
   }
-  
-  
 
   world.setGravity(gravity.x, gravity.y);
   
@@ -48,8 +46,16 @@ void game() {
   }
   
   for (int i = 0; i < enemies.size(); i++) {
+    println(">", i, enemies.size());
     enemies.get(i).show();
     enemies.get(i).act();
+    
+    if (i < enemies.size() && enemies.get(i).hp <= 0 && (abs(enemies.get(i).vx) + abs(enemies.get(i).vy)) != 0) {
+      world.remove(enemies.get(i));
+      enemies.remove(i);
+      i--;
+    }
+    println("<", i, enemies.size());
   }
   
   if (currentLvl == 7) {
@@ -70,7 +76,7 @@ void game() {
   
 }
 
-void nextLvl() {
+void nextLvl() { // Restart Level and next level functions
   currentLvl++;
   updateMap();
   restartLvl();
@@ -83,6 +89,23 @@ void restartLvl() {
   prot.setAngularVelocity(0);
   if (!((Switch) switches.get(0)).state) ((Switch) switches.get(0)).changeState();
   if (!((Switch) switches.get(1)).state) ((Switch) switches.get(1)).changeState();
+  /*
+  for (int i = 0; i < enemies.size(); i++) {
+    if (enemies.get(i).vx != 0 && enemies.get(i).vy != 0) {
+      println(i);
+      world.remove(enemies.get(i));
+      enemies.remove(i);
+      i--;
+    }
+  }
+  */
+  
+  for (int i = 3; i < enemies.size(); i++) {
+    world.remove(enemies.get(i));
+    enemies.remove(i);
+    i--;
+  }
+  
 }
 
 void lvlContacts() {
@@ -127,7 +150,10 @@ void keyAndMouseFunctions() {
       gravSwitches--;
     }
     
-    if (key == 'R' || key == 'r') restartLvl();
+    if (key == 'R' || key == 'r') {
+      currentLvl = 6;
+      nextLvl();
+    }
     
     if (key == 'W' || key == 'w') {
       if (levelContact()) {

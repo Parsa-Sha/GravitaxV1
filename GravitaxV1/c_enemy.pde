@@ -16,11 +16,13 @@ class Enemy extends FBox {
     x = this.getX();
     y = this.getY();
     
+    
     if (protContact(this)) {
       restartLvl();
     }
     
-    if (x > 400 || x < -400 || y > 200 || y < -400) {
+    
+    if (x > 400 || x < -400 || y > 400 || y < -400) {
       hp = 0;
     }  
   }

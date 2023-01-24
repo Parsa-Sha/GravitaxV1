@@ -2,8 +2,7 @@ import fisica.*;
 
 final int INTRO = 0;
 final int GAME = 1;
-final int PAUSE = 2;
-final int GAMEWON = 3;
+final int GAMEWON = 2;
 int mode = INTRO;
 
 FWorld world;
@@ -51,9 +50,6 @@ void gamemode() {
     break;
   case GAME:
     game();
-    break;
-  case PAUSE:
-    pause();
     break;
   case GAMEWON:
     gamewon();
