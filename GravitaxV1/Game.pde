@@ -1,5 +1,6 @@
 PVector instantVel;
 PVector worldPos;
+boolean tips;
 
 int c = 0;
 
@@ -35,28 +36,14 @@ void game() {
 
   world.setGravity(gravity.x, gravity.y);
   
-  for (int i = 0; i < switches.size(); i++) { // Actions of all switches
-    if (switches.get(i) instanceof Switch) {
-      ((Switch) switches.get(i)).act();
-    }
-    
-    if (switches.get(i) instanceof SwitchBlock) {
-      ((SwitchBlock) switches.get(i)).act();
-    }
-  }
+  switchesAndEnemiesList();
   
-  for (int i = 0; i < enemies.size(); i++) {
-    println(">", i, enemies.size());
-    enemies.get(i).show();
-    enemies.get(i).act();
-    
-    if (i < enemies.size() && enemies.get(i).hp <= 0 && (abs(enemies.get(i).vx) + abs(enemies.get(i).vy)) != 0) {
-      world.remove(enemies.get(i));
-      enemies.remove(i);
-      i--;
-    }
-    println("<", i, enemies.size());
+  if (tips) {
+    textSize(10);
+    fill(255, 100);
+    text(lvlTip[currentLvl-1], worldPos.x - prot.getX(), worldPos.y - prot.getY() - 50);
   }
+
   
   if (currentLvl == 7) {
     enemies.get(0).setPosition(   abs(map((2 * c) % 600, 0, 600, -600, 600)) - 300   , 150);
@@ -79,6 +66,7 @@ void game() {
 void nextLvl() { // Restart Level and next level functions
   currentLvl++;
   updateMap();
+  tips = false;
   restartLvl();
 }
 
@@ -106,6 +94,29 @@ void restartLvl() {
     i--;
   }
   
+}
+
+void switchesAndEnemiesList() {
+    for (int i = 0; i < switches.size(); i++) { // Actions of all switches
+    if (switches.get(i) instanceof Switch) {
+      ((Switch) switches.get(i)).act();
+    }
+    
+    if (switches.get(i) instanceof SwitchBlock) {
+      ((SwitchBlock) switches.get(i)).act();
+    }
+  }
+  
+  for (int i = 0; i < enemies.size(); i++) {
+    enemies.get(i).show();
+    enemies.get(i).act();
+    // This ran restartLvl() in the middle, which caused it issues.
+    if (i < enemies.size() && enemies.get(i).hp <= 0 && (abs(enemies.get(i).vx) + abs(enemies.get(i).vy)) != 0) {
+      world.remove(enemies.get(i));
+      enemies.remove(i);
+      i--;
+    }
+  }
 }
 
 void lvlContacts() {
@@ -153,6 +164,10 @@ void keyAndMouseFunctions() {
     if (key == 'R' || key == 'r') {
       currentLvl = 6;
       nextLvl();
+    }
+    
+    if (key == 'T' || key == 't') {
+      tips = true;
     }
     
     if (key == 'W' || key == 'w') {

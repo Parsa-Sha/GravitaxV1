@@ -1,6 +1,10 @@
 void intro() {
   background(50, 50, 100);
-  if (mousePressed){
+  println(introButton.hover(), introButton.press());
+  pmr();
+  introButton.show();
+  
+  if (introButton.press()) {
     mode = GAME;
     updateMap();
   }

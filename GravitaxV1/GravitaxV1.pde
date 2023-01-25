@@ -5,6 +5,8 @@ final int GAME = 1;
 final int GAMEWON = 2;
 int mode = INTRO;
 
+Button introButton;
+
 FWorld world;
 FBox[] level;
 FBox goal;
@@ -25,6 +27,7 @@ PImage[] imgs = new PImage[8];
 PImage[] protImgs = new PImage[12];
 PImage pawnImg;
 PImage[] queenImgs = new PImage[2];
+String lvlTip[] = new String[10];
 
 int currentLvl = 1;
 int gravLimit = 1;
@@ -82,5 +85,19 @@ void loadImgs(){
   
   queenImgs[0] = loadImage("data/queen0.png");
   queenImgs[1] = loadImage("data/queen1.png");
+  
+  introButton = new Button("PRESS START", width/2, height/3*2, 300, 200, color(100), color(200), color(100, 0, 255), color(50, 50, 100), 3, 1);
+  
+  lvlTip[0] = "A and D to move around!";
+  lvlTip[1] = "W to jump!";
+  lvlTip[2] = "Avoid lava!";
+  lvlTip[3] = "In mid-air, change gravity with arrow keys!";
+  lvlTip[4] = "";
+  lvlTip[5] = "";
+  lvlTip[6] = "";
+  lvlTip[7] = "";
+  lvlTip[8] = "";
+  lvlTip[9] = "";
+  
   
 }
