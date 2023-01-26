@@ -6,7 +6,7 @@ int c = 0;
 
 void game() {
   background(0);
-  image(bg, 0, -250);
+  image(bg, map(prot.getX(), -400, 400, 30, -30), map(prot.getY(), -400, 400, 30, -30)-250);
   
   intro.pause();
   intro.rewind();

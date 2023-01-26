@@ -52,7 +52,7 @@ void setBoxes() {
     lava[i].setSensor(true);
     lava[i].setGrabbable(false);
     lava[i].setStatic(true);
-    lava[i].setFillColor(color(200, 0, 0, 50));
+    lava[i].setFillColor(color(200, 0, 0, 150));
     lava[i].setPosition(-2000, -2000);
     world.add(lava[i]);
   }
@@ -129,7 +129,7 @@ void setBoxes() {
   home.setStatic(true);
   home.setGrabbable(false);
   home.setPosition(0, 0);
-  home.setFillColor(color(200, 200, 0, 50));
+  home.setFillColor(color(200, 200, 0, 150));
   world.add(home);
 
   
@@ -138,6 +138,6 @@ void setBoxes() {
   goal.setStatic(true);
   goal.setGrabbable(false);
   goal.setPosition(width/2-75, height/2-75);
-  goal.setFillColor(color(0, 200, 0, 50));
+  goal.setFillColor(color(0, 200, 0, 150));
   world.add(goal);
 }
