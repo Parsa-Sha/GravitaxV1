@@ -1,3 +1,12 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+Minim minim;
+AudioPlayer intro, game;
+
 import fisica.*;
 
 final int INTRO = 0;
@@ -28,6 +37,7 @@ PImage[] protImgs = new PImage[12];
 PImage pawnImg;
 PImage[] queenImgs = new PImage[2];
 String lvlTip[] = new String[10];
+PImage bg;
 
 int currentLvl = 1;
 int gravLimit = 1;
@@ -40,6 +50,10 @@ void setup() {
   frameRate(30);
   loadImgs();
   createStuff();
+  
+  minim = new Minim(this);
+  intro = minim.loadFile("data/intro.mp3");
+  game = minim.loadFile("data/game.mp3");
 }
 
 void draw() {
@@ -86,18 +100,17 @@ void loadImgs(){
   queenImgs[0] = loadImage("data/queen0.png");
   queenImgs[1] = loadImage("data/queen1.png");
   
-  introButton = new Button("PRESS START", width/2, height/3*2, 300, 200, color(100), color(200), color(100, 0, 255), color(50, 50, 100), 3, 1);
+  introButton = new Button("PRESS START", width/2, height/3*2, 150, 100, color(100), color(200), color(100, 0, 255), color(50, 50, 100), 3, 1);
   
   lvlTip[0] = "A and D to move around!";
   lvlTip[1] = "W to jump!";
   lvlTip[2] = "Avoid lava!";
   lvlTip[3] = "In mid-air, change gravity with arrow keys!";
-  lvlTip[4] = "";
-  lvlTip[5] = "";
-  lvlTip[6] = "";
-  lvlTip[7] = "";
-  lvlTip[8] = "";
-  lvlTip[9] = "";
+  lvlTip[4] = "You can only change gravity once per jump!";
+  lvlTip[5] = "I think you know how switches work";
+  lvlTip[6] = "Two switches and a moving enemy.";
+  lvlTip[7] = "Precise Precision time (DGR would be proud)";
+  lvlTip[8] = "Hey, don't ask me";
   
-  
+  bg = loadImage("data/bg.png");
 }

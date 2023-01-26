@@ -6,6 +6,11 @@ int c = 0;
 
 void game() {
   background(0);
+  image(bg, 0, -250);
+  
+  intro.pause();
+  intro.rewind();
+  game.play();
 
   worldPos = new PVector(width/2-prot.getX(), height/2-prot.getY());
 
@@ -13,19 +18,19 @@ void game() {
   translate(worldPos.x, worldPos.y);
   world.draw();
   world.step();
+  if (tips) {
+    textSize(12);
+    fill(255, 150);
+    text(lvlTip[currentLvl-1], prot.getX(), prot.getY() - 50);
+  }
   popMatrix();
   
-  
-  lvlContacts();
-
   textSize(30);
   fill(150);
   text("LVL: " + currentLvl, 50, 50);
-
-  keyAndMouseFunctions();
   
   c++;
-  if (c > 200) {
+  if (c > 200) { /// "Blinking"
     prot.attachImage(protImgs[floor(map(c, 200, 600, 0, 11))]);
     if (c >= 600) {
       c = 0;
@@ -35,38 +40,18 @@ void game() {
   }
 
   world.setGravity(gravity.x, gravity.y);
-  
+  lvlContacts();
+  keyAndMouseFunctions();
   switchesAndEnemiesList();
-  
-  if (tips) {
-    textSize(10);
-    fill(255, 100);
-    text(lvlTip[currentLvl-1], worldPos.x - prot.getX(), worldPos.y - prot.getY() - 50);
-  }
-
-  
-  if (currentLvl == 7) {
-    enemies.get(0).setPosition(   abs(map((2 * c) % 600, 0, 600, -600, 600)) - 300   , 150);
-  }
-  
-  if (currentLvl == 8) {
-    enemies.get(0).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , 100);
-    enemies.get(1).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , -100);
-    
-  }
-  
-  if (currentLvl == 9) {
-    enemies.get(0).setPosition(-2000, 2000);
-    enemies.get(1).setPosition(-2000, 2000);
-    enemies.get(2).setPosition(0, 0);
-  }
-  
+  enemiesSettings();
 }
 
 void nextLvl() { // Restart Level and next level functions
   currentLvl++;
+  if (currentLvl == 10) {
+    mode = GAMEWON;
+  }
   updateMap();
-  tips = false;
   restartLvl();
 }
 
@@ -77,17 +62,7 @@ void restartLvl() {
   prot.setAngularVelocity(0);
   if (!((Switch) switches.get(0)).state) ((Switch) switches.get(0)).changeState();
   if (!((Switch) switches.get(1)).state) ((Switch) switches.get(1)).changeState();
-  /*
-  for (int i = 0; i < enemies.size(); i++) {
-    if (enemies.get(i).vx != 0 && enemies.get(i).vy != 0) {
-      println(i);
-      world.remove(enemies.get(i));
-      enemies.remove(i);
-      i--;
-    }
-  }
-  */
-  
+  tips = false;
   for (int i = 3; i < enemies.size(); i++) {
     world.remove(enemies.get(i));
     enemies.remove(i);
@@ -116,6 +91,25 @@ void switchesAndEnemiesList() {
       enemies.remove(i);
       i--;
     }
+  }
+}
+
+void enemiesSettings() {
+    
+  if (currentLvl == 7) {
+    enemies.get(0).setPosition(   abs(map((2 * c) % 600, 0, 600, -600, 600)) - 300   , 150);
+  }
+  
+  if (currentLvl == 8) {
+    enemies.get(0).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , 100);
+    enemies.get(1).setPosition(  abs(map((5 * c) % 600, 0, 600, -200, 200)) - 100  , -100);
+    
+  }
+  
+  if (currentLvl == 9) {
+    enemies.get(0).setPosition(-2000, 2000);
+    enemies.get(1).setPosition(-2000, 2000);
+    enemies.get(2).setPosition(0, 0);
   }
 }
 
@@ -162,8 +156,7 @@ void keyAndMouseFunctions() {
     }
     
     if (key == 'R' || key == 'r') {
-      currentLvl = 6;
-      nextLvl();
+      mode = GAMEWON;
     }
     
     if (key == 'T' || key == 't') {

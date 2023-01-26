@@ -1,11 +1,18 @@
 void intro() {
   background(50, 50, 100);
-  println(introButton.hover(), introButton.press());
+  intro.play();
+  game.pause();
+  game.rewind();
+  
   pmr();
   introButton.show();
   
   if (introButton.press()) {
     mode = GAME;
+    currentLvl = 1;
+    prot.setVelocity(0, 0);
+    prot.setAngularVelocity(0);
+    gravity = new PVector(0, 980);
     updateMap();
   }
   
